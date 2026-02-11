@@ -1,0 +1,795 @@
+
+:root {
+    --primary-color: #0066CC;
+    --secondary-color: #00D4FF;
+    --accent-color: #ececec;
+    --dark-bg: #0F1419;
+    --light-bg: #F8F9FA;
+    --card-bg: #FFFFFF;
+    --text-dark: #1A202C;
+    --text-light: #6B7280;
+    --border-color: #E5E7EB;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+body {
+    color: var(--text-dark);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+section {
+    min-height: auto;
+    box-sizing: border-box;
+    padding-top: 65px;
+}
+
+/* HEADER & NAVBAR */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
+    z-index: 9999;
+    border-bottom: 1px solid var(--border-color);
+    overflow: visible;
+    min-height: 65px;
+    box-sizing: border-box;
+}
+
+.logo {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    white-space: nowrap;
+    position: absolute;
+    left: 30px;
+}
+
+.logo:hover {
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.navbar {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95em;
+    transition: var(--transition);
+    position: relative;
+    white-space: nowrap;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: var(--transition);
+}
+
+.navbar a:hover {
+    color: var(--primary-color);
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* MAIN CONTENT */
+
+/* Buttons defined below */
+
+/* BUTTONS */
+
+.btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: #ffffff;
+    padding: 12px 28px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    font-size: 1em;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.5);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+/* HOME SECTION */
+
+.home {
+    padding: 314px 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.home-img {
+    flex: 1 1 40%;
+    min-width: 250px;
+}
+
+.home-img img {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.content {
+    flex: 1 1 50%;
+    min-width: 250px;
+}
+
+.content h3 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin: 0 0 20px 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 15px 0;
+    opacity: 0.95;
+}
+
+/* MAIN & CHART SECTIONS */
+
+/* a two-column flow to arrange chart2 and chart3 side by side */
+main {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 40px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+#chart1-section {
+    grid-column: 1 / -1;
+    background: var(--light-bg);
+    padding: 100px 20px;
+    margin: 0;
+    position: relative;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#chart2-section {
+    grid-column: 1;
+    grid-row: 2;
+    background: var(--light-bg);
+    padding: 20px 20px;
+    margin: 0;
+    position: relative;
+    min-height: auto;
+    border-right: 1px solid var(--border-color);
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#chart3-section {
+    grid-column: 2;
+    grid-row: 2;
+    background: var(--light-bg);
+    padding: 20px 20px 40px;
+    margin: 0;
+    position: relative;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#chart1-section::before,
+#chart2-section::before,
+#chart3-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+#chart1-section h2,
+#chart2-section h2,
+#chart3-section h2 {
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 2rem;
+    margin-bottom: 40px;
+    margin-top: 0;
+    font-weight: 700;
+    width: 100%;
+}
+
+/* Chart Container */
+#chart1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 520px;
+    background: rgb(255, 255, 255);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    margin: 0 auto 20px;
+    width: 100%;
+    max-width: 1100px;
+    box-sizing: border-box;
+}
+
+#map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 520px;
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    margin: 0 auto 20px;
+    width: 100%;
+    max-width: 1000px;
+    box-sizing: border-box;
+}
+
+#bar-charts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 0 auto 20px;
+    width: 100%;
+    max-width: 1100px;
+    box-sizing: border-box;
+    flex: 1;
+    align-content: center;
+}
+
+#death-bar-chart,
+#vaccination-bar-chart {
+    background: white;
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: var(--shadow-lg);
+    min-height: 420px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.chart-title {
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Chart header title + fullscreen button */
+
+.chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+/* When the title is used inside the chart header, make it compact */
+.chart-header .chart-title {
+    margin: 0;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.chart-fs-btn {
+    border: none;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    line-height: 1;
+}
+
+.chart-fs-btn:hover {
+    background: rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.chart-fs-btn i {
+    font-size: 15px;
+}
+
+/* Fullscreen toggle only inside #chart3-section */
+
+#chart3-section.fullscreen-active {
+    /* Fills most of the viewport height, but stays confined to the right panel */
+    min-height: calc(100vh - 120px);
+}
+
+#chart3-section.fullscreen-active #bar-charts-container {
+    position: relative;
+    grid-template-columns: 1fr;
+    min-height: calc(100vh - 220px);
+}
+
+/* Hide all charts while fullscreen is active */
+#chart3-section.fullscreen-active #bar-charts-container > div {
+    display: none;
+}
+
+/* except the fullscreen one */
+#chart3-section.fullscreen-active #bar-charts-container > div.chart-fullscreen {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+}
+
+/* Give the chart more space in fullscreen mode */
+#chart3-section.fullscreen-active .data-source {
+    display: none;
+}
+
+/* Make the SVG scale nicely in fullscreen */
+#chart3-section.fullscreen-active .chart-fullscreen svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Data source styling */
+.data-source {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+    width: 100%;
+    max-width: 1100px;
+    box-sizing: border-box;
+}
+
+.data-source h1 {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.data-source a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.data-source a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* TOOLTIPS */
+
+.tooltip,
+#tooltip,
+#map-tooltip {
+    position: absolute;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    pointer-events: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    max-width: 250px;
+    word-wrap: break-word;
+    display: none;
+}
+
+.tooltip.visible,
+#tooltip.visible,
+#map-tooltip.visible {
+    display: block;
+}
+
+/* SVG & CHARTS */
+
+svg {
+    display: block;
+    margin: auto;
+}
+
+.axis text,
+.axis.tick text {
+    font-size: 14px;
+    fill: var(--text-dark);
+}
+
+.axis.domain,
+.axis line {
+    stroke: var(--border-color);
+    stroke-width: 1;
+}
+
+.axis-label {
+    font-size: 14px;
+    fill: var(--text-dark);
+    font-weight: 600;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px 40px;
+    color: white;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    margin: 0;
+    line-height: 1.8;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+footer a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1024px) {
+    #bar-charts-container {
+        grid-template-columns: 1fr;
+    }
+
+    #death-bar-chart,
+    #vaccination-bar-chart {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    #chart2-section {
+        grid-column: 1 / -1;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    #chart3-section {
+        grid-column: 1 / -1;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    #chart2-section {
+        grid-column: 1 / -1;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    #chart3-section {
+        grid-column: 1 / -1;
+        min-height: auto;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .navbar a {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .home {
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .home-img {
+        flex: 1 1 100%;
+    }
+
+    .content {
+        flex: 1 1 100%;
+    }
+
+    .content h3 {
+        font-size: 2rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+
+    section {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+
+    #chart1-section,
+    #chart2-section,
+    #chart3-section {
+        padding: 40px 20px;
+    }
+
+    #chart1-section h2,
+    #chart2-section h2,
+    #chart3-section h2 {
+        font-size: 1.8rem;
+    }
+
+    #bar-charts-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    #chart1,
+    #map,
+    #death-bar-chart,
+    #vaccination-bar-chart {
+        min-height: 0px;
+        padding: 20px;
+    }
+
+    main {
+        width: 100%;
+        padding: 10px;
+    }
+
+    footer {
+        padding: 20px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    .logo {
+        font-size: 1.3em;
+    }
+
+    .navbar {
+        gap: 10px;
+    }
+
+    .content h3 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    #chart1-section h2,
+    #chart2-section h2,
+    #chart3-section h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* SCROLL ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-on-scroll {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+section {
+    animation: fadeInUp 1s ease-out;
+}
+
+#chart1,
+#map,
+#bar-charts-container {
+    animation: fadeInScale 0.8s ease-out;
+}
+
+.data-source {
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+main>section>h2 {
+    animation: fadeInUp 0.6s ease-out;
+    border-bottom: 3px solid #0066CC;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+/* FULLSCREEN ANIMATIONS */
+
+@keyframes expandFullscreen {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes chartSlideInFullscreen {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rotateIcon {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+/* Apply animations to fullscreen elements */
+#chart3-section.fullscreen-active {
+    animation: expandFullscreen 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#chart3-section.fullscreen-active .chart-fullscreen {
+    animation: chartSlideInFullscreen 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.chart-fs-btn:active {
+    transform: scale(0.95);
+}
+
+.chart-fs-btn i {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#chart3-section.fullscreen-active .chart-fs-btn i {
+    animation: rotateIcon 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}

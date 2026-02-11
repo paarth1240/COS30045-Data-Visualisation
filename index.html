@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Track Australia's Pandemic Response. Analyze trends in healthcare spending, mortality rates, and vaccination rollouts through our interactive data dashboards." />
+    <meta name="keywords" content="Covid Hub, Data Visualization, Healthcare, D3.js, Australia" />
+    <meta name="author" content="Saniru Kumarage, Paarth Jindal" />
+
+    <title>Covid Hub Australia | Dive into the Numbers</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://kit.fontawesome.com/8c3475ab7a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo" onclick="location.reload(); window.location.hash = 'home'; return false;">
+            <img src="images/Logo.png" alt="Covid HUB Logo" class="logo-img">
+            <span>Covid Hub</span>
+        </a>
+        <nav class="navbar">
+            <a href="#home">Homepage</a>
+            <a href="#chart1-section">Health Expenditure</a>
+            <a href="#chart2-section">Mortality & Vaccinations</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-img">
+            <img src="images/virus.gif" alt="COVID-19 Visualization" loading="lazy">
+        </div>
+        <div class="content">
+            <h1 style="margin: 0;">COVID-19 Pandemic Australia</h1>
+            <p>Welcome to our COVID-19 information hub. Explore interactive charts on healthcare expenditure, mortality
+                rates, and vaccination progress across Australia, aiding in a deeper comprehension of the pandemic's
+                ongoing effects.</p>
+            <p>COVID-19 is an infectious disease caused by the SARS-CoV-2 virus. Since its emergence, it has presented
+                unprecedented challenges to global health, affecting respiratory systems and healthcare infrastructure
+                worldwide
+            </p>
+            <a href="#chart1-section" class="btn">
+                <span>Explore Data</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <main>
+        <section id="chart1-section">
+            <h2>Annual Health Expenditure of Australia <span
+                    style="display: block; font-size: 0.8em; color: #888; font-weight: 400; margin-top: 10px;">2019 -
+                    2022</span></h2>
+            <div id="chart1"></div>
+            <div class="data-source">
+                <h1><i class="fa-solid fa-database"></i> Data Source: <a
+                        href="https://data-explorer.oecd.org/vis?tm=health%20spending&pg=0&hc[Measure]=Expenditure&snb=76&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_SHA%40DF_SHA&df[ag]=OECD.ELS.HD&df[vs]=1.0&pd=2019%2C2022&dq=.A.EXP_HEALTH.XDC._T.._T.._T...V&ly[rw]=REF_AREA&ly[cl]=TIME_PERIOD&to[TIME_PERIOD]=false">OECD
+                        Health Statistics</a></h1>
+            </div>
+        </section>
+
+        <section id="chart2-section">
+            <h2>COVID-19 Mortality in Australia</h2>
+            <div id="map"></div>
+            <div id="map-tooltip" class="tooltip"></div>
+            <div class="data-source">
+                <h1><i class="fa-solid fa-database"></i> Data Source: <a
+                        href="https://www.abs.gov.au/articles/covid-19-mortality-australia-deaths-registered-until-31-january-2024">Australian
+                        Bureau of Statistics (ABS)</a></h1>
+            </div>
+        </section>
+
+        <section id="chart3-section">
+            <h2>COVID-19 Deaths and Vaccinations Over Time</h2>
+
+            <div id="bar-charts-container">
+                <div id="death-bar-chart" class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">COVID-19 Deaths by State (2021-2024)</h3>
+                        <button class="chart-fs-btn" data-target="death-bar-chart" aria-label="Toggle fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="vaccination-bar-chart" class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Vaccination Progress by State (2021-2024)</h3>
+                        <button class="chart-fs-btn" data-target="vaccination-bar-chart" aria-label="Toggle fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tooltip" class="tooltip"></div>
+            <div class="data-source">
+                <h1><i class="fa-solid fa-database"></i> Data Source: <a
+                        href="https://www.health.gov.au/resources/collections/covid-19-vaccination-vaccination-data?language=en">Australian
+                        Government Department of Health and Aged Care</a></h1>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            <i class="fa-solid fa-graduation-cap"></i>
+            <a href="https://swinburneonline.instructure.com/courses/6553">COS30045 - Data Visualisation </a>
+            <br>
+            <i class="fa-solid fa-users"></i> Team: Saniru Kumarage, Paarth Jindal
+            <br>
+            <i class="fa-brands fa-github"></i> <a href="https://github.com/paarth1240/COS30045-Data-Visualisation">Our Github</a>
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script/StateCodes.js"></script>
+    <script src="script/expenditure.js"></script>
+    <script src="script/deaths.js"></script>
+
+    <script>
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and chart containers
+        document.querySelectorAll('section, #chart1, #map, #bar-charts-container, .data-source').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+
+</html>
